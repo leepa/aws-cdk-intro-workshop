@@ -9,7 +9,8 @@ Okay, now let's write the Lambda handler code for our hit counter.
 
 Create the file `lambda/hitcounter.js`:
 
-```js
+{{< tabs name="LambdaHandler" >}}
+{{{< tab name="TypeScript" codelang="ts">}}
 const { DynamoDB, Lambda } = require('aws-sdk');
 
 exports.handler = async function(event) {
@@ -38,7 +39,20 @@ exports.handler = async function(event) {
   // return response back to upstream caller
   return JSON.parse(resp.Payload);
 };
-```
+{{< /tab >}}
+{{< tab name="Python" codelang="python" >}}
+from aws_cdk import (
+    aws_lambda as lambda,
+    aws_dynamodb as dynamodb,
+    core
+)
+
+#
+# blah blah blah
+#
+{{< /tab >}}}
+{{< /tabs >}}
+
 
 ## Discovering resources at runtime
 

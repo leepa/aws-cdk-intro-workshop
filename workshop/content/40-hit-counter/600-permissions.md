@@ -9,7 +9,8 @@ Let's give our Lambda's execution role permissions to read/write from our table.
 
 Go back to `hitcounter.ts` and add the following highlighted lines:
 
-{{<highlight ts "hl_lines=30-31">}}
+{{< tabs name="GrantExecution" >}}
+{{{< tab name="TypeScript" codelang="ts">}}
 import cdk = require('@aws-cdk/cdk');
 import lambda = require('@aws-cdk/aws-lambda');
 import dynamodb = require('@aws-cdk/aws-dynamodb');
@@ -43,7 +44,19 @@ export class HitCounter extends cdk.Construct {
     table.grantReadWriteData(this.handler.role);
   }
 }
-{{</highlight>}}
+{{< /tab >}}
+{{< tab name="Python" codelang="python" >}}
+from aws_cdk import (
+    aws_lambda as lambda,
+    aws_dynamodb as dynamodb,
+    core
+)
+
+#
+# blah blah blah
+#
+{{< /tab >}}}
+{{< /tabs >}}
 
 ## Deploy
 
@@ -112,7 +125,8 @@ But, we must also give our hit counter permissions to invoke the downstream lamb
 
 Add the highlighted lines to `lib/hitcounter.ts`:
 
-{{<highlight ts "hl_lines=33-34">}}
+{{< tabs name="GrantInvoke" >}}
+{{{< tab name="TypeScript" codelang="ts">}}
 import cdk = require('@aws-cdk/cdk');
 import lambda = require('@aws-cdk/aws-lambda');
 import dynamodb = require('@aws-cdk/aws-dynamodb');
@@ -149,7 +163,20 @@ export class HitCounter extends cdk.Construct {
     props.downstream.grantInvoke(this.handler.role);
   }
 }
-{{</highlight>}}
+{{< /tab >}}
+{{< tab name="Python" codelang="python" >}}
+from aws_cdk import (
+    aws_lambda as lambda,
+    aws_dynamodb as dynamodb,
+    core
+)
+
+#
+# blah blah blah
+#
+{{< /tab >}}}
+{{< /tabs >}}
+
 
 ## Diff
 

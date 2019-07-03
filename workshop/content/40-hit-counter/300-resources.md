@@ -26,7 +26,8 @@ in use.
 
 Now, go back to `lib/hitcounter.ts` and add the following highlighted code:
 
-{{<highlight ts "hl_lines=3 12-13 18-29">}}
+{{< tabs name="LambdaHandler" >}}
+{{{< tab name="TypeScript" codelang="ts">}}
 import cdk = require('@aws-cdk/cdk');
 import lambda = require('@aws-cdk/aws-lambda');
 import dynamodb = require('@aws-cdk/aws-dynamodb');
@@ -58,7 +59,20 @@ export class HitCounter extends cdk.Construct {
     });
   }
 }
-{{</highlight>}}
+{{< /tab >}}
+{{< tab name="Python" codelang="python" >}}
+from aws_cdk import (
+    aws_lambda as lambda,
+    aws_dynamodb as dynamodb,
+    core
+)
+
+#
+# blah blah blah
+#
+{{< /tab >}}}
+{{< /tabs >}}
+
 
 ## What did we do here?
 
